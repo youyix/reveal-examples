@@ -1,0 +1,193 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>ASQ - A sample presentation</title>
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script> 
+    <!-- Use shadow dom -->
+    <script>
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+    </script>
+    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="bower_components/asq-elements/asq-elements.html">
+
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">   
+
+    <link rel="import" href="shared-styles.html">
+    <style is="custom-style" include="shared-styles"></style> 
+  </head>
+
+  <body class="impress-not-supported" data-asq-role="viewer">
+    <asq-settings max-num-submissions="2" slideflow="ctrl" assessment="none"></asq-settings>
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Reveal.js with ASQ</h1>
+          <h3>The HTML Presentation Framework</h3>
+        </section>
+
+        <section id="intro">
+          <h1>This is a sample ASQ presentation</h1>
+          <h3>Here goes a subheadline</h3>
+          <hr />
+          <asq-welcome></asq-welcome>
+        </section>
+
+        <section id="asq-multi-choice-q">
+          <section>
+            <asq-stem><h2>&lt;asq-multi-choice-q&gt; question</h2></asq-stem>
+            <asq-exercise max-num-submissions="-1" assessment="self">
+              <asq-multi-choice-q selected="op3">
+                <asq-stem><h3>Here you can pick just one answer:</h3></asq-stem>
+                <asq-option name="op0">Option 0</asq-option>
+                <asq-option name="op1">Option 1</asq-option>
+                <asq-option name="op2">Option 2</asq-option>
+                <asq-option name="op3">Option 3</asq-option>
+              </asq-multi-choice-q>
+            </asq-exercise>
+          </section>
+          <section>
+            <asq-exercise max-num-submissions="1" assessment="self">
+              <asq-multi-choice-q selected-values='["op1", "op2"]' multi>
+                <asq-stem><h3>Here you can pick as many as you want</h3></asq-stem>
+                  <asq-option name="op0">Option 0</asq-option>
+                  <asq-option name="op1">Option 1</asq-option>
+                  <asq-option name="op2">Option 2</asq-option>
+                  <asq-option name="op3">Option 3</asq-option>
+                </asq-multi-choice-q>
+            </asq-exercise>
+          </section>
+        </section>
+
+        <section id="asq-text-input-q">
+          <asq-exercise max-num-submissions="8">
+            <asq-text-input-q label="value" id="text-q">
+              <asq-stem><h5>What's value of a[3]?</h5></asq-stem>
+              <pre><code>
+                char a[27];
+                char *b = "abc";
+                strcpy(a, b);</code></pre>
+              <asq-solution hidden>\0</asq-solution>
+            </asq-text-input-q>
+         </asq-exercise>
+        </section>
+
+        <section id="asq-css-select-q">
+          <asq-exercise max-num-submissions="9">
+            <asq-css-select-q htmlcode="<ul><li class='aclass'><ul id='aid'><li></li><li></li></ul></li><div><p></p><p class='bclass'></p></div></li></ul>">
+              <asq-stem><h3>Select all 'li' elements:</h3></asq-stem>
+            </asq-css-select-q>
+          </asq-exercise>
+        </section>
+
+        <section id="asq-js-function-body">
+          <asq-exercise max-num-submissions="1">
+            <asq-js-function-body-q function-name="wrap(str, tagName)" test-exp="wrap('hello World', 'div');">
+              <asq-stem><h4>Implement a function that wraps a given string with an HTML tag:</h4></asq-stem>
+            </asq-js-function-body-q>
+          </asq-exercise>
+        </section> 
+
+        <section id="asq-buckets-q">
+          <asq-exercise class="container">
+            <asq-stem><h4>Drag the labels (name of cites) to match the buckets.</h4></asq-stem>
+            <asq-buckets-q role="viewer"
+              mode="1-3" 
+              x-matchable="div[buckets]" 
+              y-matchable="div[labels]" 
+              attr-for-matched="s-name"
+              matched-attribute="matched"
+              matched-class="label-success">
+
+              <div buckets>
+                <div s-name="Europe" class="bucket"><b>Europe</b></div>
+                <div s-name="North America" class="bucket"><b>North America</b></div>
+                <div s-name="Middle East" class="bucket"><b>Middle East</b></div>
+              </div>
+              
+              <div labels>
+                <div s-name="New York"  class="label label-primary">New York</div>
+                <div s-name="London"  class="label label-primary">London</div>
+                <div s-name="Zurich"  class="label label-primary">Zurich</div>
+                <div s-name="Jerusalem"  class="label label-primary">Jerusalem</div>
+                <div s-name="Chicago"  class="label label-primary">Chicago</div>
+                <div s-name="Lugano"  class="label label-primary">Lugano</div>
+              </div>
+            </asq-buckets-q>
+          </asq-exercise>
+        </section>
+
+
+        <section id="asq-order-q">
+          <asq-exercise>
+            <asq-stem>Specify the order of Polymer lifecycle methods.</asq-stem>
+            <asq-order-q sortable="[label]">
+              <div label class="static" name="ready">ready</div>
+              <div label class="static" name="attached">attached</div>
+              <div label class="static" name="created">created</div>
+              <div label class="static" name="detached">detached</div>
+            </asq-order-q>
+          </asq-exercise>
+        </section>
+
+      </div>
+    </div>
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+      var revealjsPath = 'reveal.js/';
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: revealjsPath + 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: revealjsPath + 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: revealjsPath + 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: revealjsPath + 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: revealjsPath + 'plugin/zoom-js/zoom.js', async: true },
+          { src: revealjsPath + 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+      
+
+
+
+      
+
+
+
+
+    
+
+
+  </body>
+</html>
+
