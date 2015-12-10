@@ -150,7 +150,7 @@
       </div>
     </div>
     <script src="reveal.js/lib/js/head.min.js"></script>
-    <script src="reveal.js/js/reveal.js"></script>
+    <script src="js/asq-reveal.js"></script>
     <script>
       var revealjsPath = 'reveal.js/';
       // Full list of configuration options available at:
@@ -171,7 +171,13 @@
           { src: revealjsPath + 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: revealjsPath + 'plugin/zoom-js/zoom.js', async: true },
           { src: revealjsPath + 'plugin/notes/notes.js', async: true }
-        ]
+        ],
+
+        keyboard: {
+          13: null, // go to the next slide when the ENTER key is pressed
+          27: function() {}, // do something custom when ESC is pressed
+          32: function() {}, // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+        }
       });
 
     </script>

@@ -107,9 +107,16 @@ var RevealNotes = (function() {
 
 		// Open the notes when the 's' key is hit
 		document.addEventListener( 'keydown', function( event ) {
+			// ASQ PATCH
+			// Disregard the event if the active element is an ASQ element
+			var activeElementIsASQ = document.activeElement && document.activeElement.nodeName.indexOf('ASQ') >= 0;
+
 			// Disregard the event if the target is editable or a
 			// modifier is present
-			if ( document.querySelector( ':focus' ) !== null || event.shiftKey || event.altKey || event.ctrlKey || event.metaKey ) return;
+			if ( document.querySelector( ':focus' ) !== null || activeElementIsASQ || event.shiftKey || event.altKey || event.ctrlKey || event.metaKey ) return;
+
+			
+
 
 			// Disregard the event if keyboard is disabled
 			if ( Reveal.getConfig().keyboard === false ) return;
