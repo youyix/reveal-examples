@@ -30,6 +30,7 @@
 
     <link rel="import" href="shared-styles.html">
     <style is="custom-style" include="shared-styles"></style> 
+    <script src="js/jquery.js"></script>
   </head>
 
   <body class="impress-not-supported" data-asq-role="viewer">
@@ -38,8 +39,8 @@
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section>
-          <h1>Reveal.js with ASQ</h1>
+        <section id='asq'>
+          <h1>Reveal.js with ASQ 2</h1>
           <h3>The HTML Presentation Framework</h3>
         </section>
 
@@ -50,8 +51,23 @@
           <asq-welcome></asq-welcome>
         </section>
 
-        <section id="asq-multi-choice-q">
-          <section>
+        <section>
+          <section id="fragments">
+            <p>h11</p>
+            <p class="fragment">grow</p>
+            <p class="fragment">shrink</p>
+            <p class="fragment">fade-out</p>
+            <p class="fragment">current-visible</p>
+            <p class="fragment">highlight-red</p>
+            <p class="fragment">highlight-blue</p>
+          </section>
+          <section id="blank">
+            <p>h2</p>
+          </section>
+        </section>
+
+        <section>
+          <section id="m-slide-0">
             <asq-stem><h2>&lt;asq-multi-choice-q&gt; question</h2></asq-stem>
             <asq-exercise max-num-submissions="-1" assessment="self">
               <asq-multi-choice-q selected="op3">
@@ -63,7 +79,7 @@
               </asq-multi-choice-q>
             </asq-exercise>
           </section>
-          <section>
+          <section id="m-slide-1">
             <asq-exercise max-num-submissions="1" assessment="self">
               <asq-multi-choice-q selected-values='["op1", "op2"]' multi>
                 <asq-stem><h3>Here you can pick as many as you want</h3></asq-stem>
@@ -76,7 +92,7 @@
           </section>
         </section>
 
-        <section id="asq-text-input-q">
+<!--         <section id="asq-text-input-q">
           <asq-exercise max-num-submissions="8">
             <asq-text-input-q label="value" id="text-q">
               <asq-stem><h5>What's value of a[3]?</h5></asq-stem>
@@ -146,9 +162,10 @@
             </asq-order-q>
           </asq-exercise>
         </section>
-
+ -->
       </div>
     </div>
+    <script src="js/test.js"></script>
     <script src="reveal.js/lib/js/head.min.js"></script>
     <script src="js/asq-reveal.js"></script>
     <script>
@@ -182,9 +199,8 @@
 
     </script>
 
-      
-
-
+    
+    
 
       
 

@@ -4,6 +4,12 @@
  * MIT licensed
  *
  * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ *
+ * ---------------------------------
+ * ASQ Patch 
+ * - It will trigger events, `reveal:slide`, when avctive slide has been changed.
+ * - Disable keyboard events when user is focusing at an ASQ element.
+ * 
  */
 (function( root, factory ) {
 	if( typeof define === 'function' && define.amd ) {
@@ -2528,6 +2534,10 @@
 	 * Updates the progress bar to reflect the current slide.
 	 */
 	function updateProgress() {
+		// ASQ PATCH
+		dispatchEvent('reveal:slide', { 
+			detail: getIndices()
+		});
 
 		// Update progress if enabled
 		if( config.progress && dom.progressbar ) {
