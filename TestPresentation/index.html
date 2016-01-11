@@ -165,42 +165,16 @@
  -->
       </div>
     </div>
-    <script src="js/test.js"></script>
+    <script>
+      window.role = 'presenter';
+      window.params = {
+        'translation': 'slide'
+      }
+    </script>
     <script src="reveal.js/lib/js/head.min.js"></script>
     <script src="js/asq-reveal.js"></script>
-    <script>
-      var revealjsPath = 'reveal.js/';
-      // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
+    <script src="js/asq-reveal-initiator.js"></script>
 
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: revealjsPath + 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: revealjsPath + 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: revealjsPath + 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: revealjsPath + 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: revealjsPath + 'plugin/zoom-js/zoom.js', async: true },
-          { src: revealjsPath + 'plugin/notes/notes.js', async: true }
-        ],
-
-        keyboard: {
-          13: null, // go to the next slide when the ENTER key is pressed
-          27: function() {}, // do something custom when ESC is pressed
-          32: function() {}, // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
-        }
-      });
-
-    </script>
-
-    
-    
 
       
 
