@@ -1,8 +1,21 @@
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+  return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var role = getParameterByName('role');
+
 (function(role, params) {
-  var role = role;
+  role = role ? role : 'viewer';
   var revealjsPath = 'reveal.js/';
 
-  var transition = params['transition'] ? params['transition'] : 'slide';
+  var transition = 'slide';
+  if (params) {
+    transition = params['transition'] ? params['transition'] : 'slide';
+  }
+  
 
   var dependencies = {
     'common': [
@@ -28,7 +41,7 @@
 
     dependencies: dependencies['common'].concat(dependencies['presenter-only'])
   };
-
+  
   revealSettings['viewer'] = {
     controls: false,
     progress: true,
@@ -39,37 +52,12 @@
 
     dependencies: dependencies['common'].concat(dependencies['viewer-only']),
 
-    keyboard: {
-      80: null,
-      33: null,
-      78: null,
-      34: null,
-      72: null,
-      37: null,
-      76: null,
-      39: null,
-      75: null,
-      38: null,
-      74: null,
-      40: null,
-      36: null,
-      35: null,
-      32: null,
-      13: null,
-      58: null,
-      59: null,
-      66: null,
-      190: null,
-      191: null,
-      70: null,
-      65: null,
-      27: null
-    }
+    keyboard: false
   }
-
+  console.log('role', role, revealSettings[role]);
   Reveal.initialize(revealSettings[role]);
 
-})(window.role, window.params);
+})(role, null);
 
 
 
